@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Snake Game</title>
+</head>
+
+<body>
+<div class="score">
+  <h1 class="score__title">The Snake Game!</h1>
+  <h3 class="score__sub_title">Score</h3>
+  <p class="score__number" data-speed="0">0</p>
+</div>
+
+
+<div class="result-popup">
+  <span class="result-popup__close">X</span>
+  <h2>Game Over!</h2>
+  <p>Your score is: <span class="result-popup__score"></span></p>
+</div>
+
+<div class="canvasWrap">
+  <canvas width="1000" height="800" id="etch-a-sketch"></canvas>
+  <div class="buttons">
+    <button class="start">Start!</button>
+  </div>
+</div>
+<script src="./snake.js"></script>
+
+<style>
+  body {
+    min-height: 100vh;
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    background: white;
+    /*background: url(https://s3.amazonaws.com/media.locally.net/original/HABA_ALT_2017-08-02-13-22-45.jpg);*/
+    background-size: cover;
+    position: relative;
+  }
+
+  .result-popup {
+    background: wheat;
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 20px 50px;
+    opacity: 0;
+    transition: transform 0.3s ease-in-out;
+    text-align: center;
+  }
+
+  .result-popup.show {
+    opacity: 1;
+  }
+
+  .result-popup__score {
+    font-weight: 900;
+  }
+
+  .result-popup__close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: white;
+    border: 1px solid black;
+    border-radius: 50%;
+    padding: 2px 5px;
+    cursor: pointer;
+  }
+
+  .score {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .score .score__title {
+    margin-top: 0;
+  }
+
+  .score .score__sub_title {
+    margin: 0;
+  }
+
+  .score .score__number {
+    margin: 5px;
+  }
+
+  canvas {
+    box-shadow: 0 0 0 5px red;
+    width: 500px;
+    height: 400px;
+    background: white;
+    margin-bottom: 30px;
+  }
+
+  canvas.shake {
+    animation: shake 0.5s linear 1;
+  }
+
+  button.start {
+    display: block;
+    margin: 0 auto;
+    color: white;
+    background-color: cadetblue;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 25px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  button.start.hidden {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+
+  @keyframes shake {
+
+    10%,
+    90% {
+      transform: translate3d(-1px, 0, 0);
+    }
+
+    20%,
+    80% {
+      transform: translate3d(2px, 0, 0);
+    }
+
+    30%,
+    50%,
+    70% {
+      transform: translate3d(-4px, 0, 0);
+    }
+
+    40%,
+    60% {
+      transform: translate3d(4px, 0, 0);
+    }
+  }
+</style>
+</body>
+
+</html>
